@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Vi
         postData.put("txtPassword", etPassword.getText().toString() );
 
         PostResponseAsyncTask task = new PostResponseAsyncTask(this, postData);
-        task.execute("http://10.0.2.2:8080/client/login.php"); //localhost:8080
+        task.execute("http://10.0.2.2/client/login.php"); //localhost:8080
 
     }
 }

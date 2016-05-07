@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Vi
         btnLogin = (Button) findViewById(R.id.btnLogin) ;
         btnLogin.setOnClickListener(this);
 
+        TryToLogin test = new TryToLogin(etUsername.getText().toString(), etPassword.getText().toString());
+        Toast.makeText(this, test.logIn(),Toast.LENGTH_LONG).show();
     }
     @Override
     public void processFinish(String result) {

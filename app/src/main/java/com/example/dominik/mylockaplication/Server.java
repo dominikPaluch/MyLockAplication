@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by Piotr on 2016-05-09.
  */
 public class Server {
-    private static String address = "http://10.0.2.2/client/";
+    private static String address = "http://piotrtraczyk.tk/accountApp/";
     public static HttpURLConnection openConnection(String specificAddress)
     {
         HttpURLConnection resultHttpURLConnection = null;

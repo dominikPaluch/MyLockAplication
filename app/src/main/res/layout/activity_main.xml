@@ -111,6 +111,7 @@
         android:clickable="true"
         android:textColor="#f50b0b"
         android:layout_alignParentRight="true"
+        android:onClick="addUser"
         />
 
 

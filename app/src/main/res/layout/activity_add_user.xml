@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.dominik.mylockaplication.MainActivity"
+    android:background="#f0f1ef"
+    android:clickable="true"
+    android:id="@+id/background">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="witaj w rejestracji"
+        android:id="@+id/welcomeText"
+        android:textSize="50px"
+        android:focusable="false"
+        android:gravity="center"
+        android:layout_marginTop="30px"
+        android:textColor="#020000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeText"
+        android:id="@+id/linear0"
+        android:layout_marginTop="55dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="podaj imie"
+            android:id="@+id/tvImie"
+            android:textSize="50px"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etName"
+            android:layout_weight="0.5"
+            android:background="#e1dfdf" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear0"
+        android:id="@+id/linear1"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="podaj login"
+            android:id="@+id/tvLogin"
+            android:textSize="50px"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etLogin"
+            android:layout_weight="0.5"
+            android:background="#e1dfdf" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear1"
+        android:id="@+id/linear2"
+        android:layout_marginTop="30dp"
+        android:touchscreenBlocksFocus="false"
+        android:transitionGroup="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="podaj haslo"
+            android:id="@+id/tvPassword"
+            android:textSize="50px"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textIsSelectable="true" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etPassword1"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_weight="0.5"
+            android:contextClickable="false"
+            android:background="#e1dfdf" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:id="@+id/linear3"
+        android:layout_marginTop="30dp"
+        android:touchscreenBlocksFocus="false"
+        android:transitionGroup="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="powtorz haslo"
+            android:id="@+id/tvPassword2"
+            android:textSize="50px"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textIsSelectable="true" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etPassword2"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_weight="0.5"
+            android:contextClickable="false"
+            android:background="#e1dfdf" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear3"
+        android:id="@+id/linear4"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="podaj e-mail"
+            android:id="@+id/tvEmail"
+            android:textSize="50px"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmail"
+            android:layout_weight="0.5"
+            android:background="#e1dfdf" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear5"
+        android:layout_below="@id/linear4"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Akceptuje regulamin"
+            android:id="@+id/checkBox"
+            android:layout_marginLeft="190dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zarejestruj"
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/linear5"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30px"
+
+        />
+
+
+</RelativeLayout>

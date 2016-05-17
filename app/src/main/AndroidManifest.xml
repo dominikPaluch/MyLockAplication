@@ -18,7 +18,9 @@
             </intent-filter>
             android:screenOrientation="portrait" //blokada obracania
         </activity>
-        <activity android:name=".ActivityAfterLogin"></activity>
+        <activity android:name=".ActivityAfterLogin" />
+        <activity android:name=".AddUser" />
+        <activity android:name=".AfterSuccessLogin"></activity>
     </application>
 
 </manifest>

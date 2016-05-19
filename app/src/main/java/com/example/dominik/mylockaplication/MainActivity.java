@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         context = this;
     }
 
-    public void addUser(View view) {
+    public void addUser(View view)
+    {
         Intent i = new Intent(this, AddUser.class);
         startActivity(i);
     }

@@ -1,12 +1,14 @@
 package com.example.dominik.mylockaplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,7 +20,8 @@ AddUser extends AppCompatActivity implements View.OnClickListener
 {
     EditText etLogin, etName, etPassword1, etPassword2, etEmail;
     private Context context;
-    Button btnLogin;
+    Button btnLogin, btnBackToLogin;
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,12 +30,19 @@ AddUser extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_add_user);
 
         etLogin = (EditText) findViewById(R.id.etLogin);
+        etLogin.setHint("Your Login");
         etName = (EditText)findViewById(R.id.etName);
+        etName.setHint("Your Name");
         etEmail = (EditText) findViewById(R.id.etEmail);
+        etEmail.setHint("Your Email");
         etPassword2 = (EditText)findViewById(R.id.etPassword2);
+        etPassword2.setHint("Your Password");
         etPassword1 = (EditText)findViewById(R.id.etPassword1);
+        etPassword1.setHint("Your Password");
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
+        btnBackToLogin = (Button) findViewById(R.id.btnBackToLogin);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
         context = this;
 
     }
@@ -45,7 +55,12 @@ AddUser extends AppCompatActivity implements View.OnClickListener
                 etPassword1.getText().toString(),
                 etPassword2.getText().toString(),
                 etEmail.getText().toString());
+    }
 
+    public void BackToLogin(View view)
+    {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     class TryToAddNewUser extends AsyncTask<String, String, String>
@@ -61,6 +76,7 @@ AddUser extends AppCompatActivity implements View.OnClickListener
             loginAndPassMap.put("txtPassword1", params[2]);
             loginAndPassMap.put("txtPassword2", params[3]);
             loginAndPassMap.put("txtEmail", params[4]);
+
             Server.writeToHttpURLConnection(connection, Server.convertHashMapToPOSTString(loginAndPassMap));
 
             return Server.readFromHttpURLConnection(connection);
@@ -72,11 +88,14 @@ AddUser extends AppCompatActivity implements View.OnClickListener
             Log.d("DEBUG", responce);
             if(responce.equals("user_added"))
             {
-                Toast.makeText(context, "Add new user successful!", Toast.LENGTH_LONG).show();
+                if(checkBox.isChecked())
+                    Toast.makeText(context, "Add new user successful!", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(context, "You must accept a regulamin!", Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(context, "Add new user wrong!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, responce, Toast.LENGTH_LONG).show();
             }
         }
     }

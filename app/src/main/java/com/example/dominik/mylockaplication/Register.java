@@ -5,9 +5,6 @@ import android.os.AsyncTask;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 
-/**
- * Created by Piotr on 2016-05-09.
- */
 public class Register extends AsyncTask<String,Void,String> {
 
     @Override

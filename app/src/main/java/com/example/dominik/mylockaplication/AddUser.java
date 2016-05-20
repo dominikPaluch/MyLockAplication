@@ -112,6 +112,5 @@ AddUser extends AppCompatActivity implements View.OnClickListener
                 toast.show();
             }
         }
-
     }
 }

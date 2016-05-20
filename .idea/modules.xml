@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LockApp1.0.iml" filepath="$PROJECT_DIR$/LockApp1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyLockAplication.iml" filepath="$PROJECT_DIR$/MyLockAplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lock33.iml" filepath="$PROJECT_DIR$/lock33.iml" />

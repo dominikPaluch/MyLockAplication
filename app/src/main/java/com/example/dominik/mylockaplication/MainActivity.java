@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnLogin;
     EditText etUsername, etPassword;
     private Context context;
+    private Toast toast = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(i);
     }
 
-    class TryToLogin extends AsyncTask<String, String, String> {
+//    public static void changeToast(String message, Context context, Toast toast)
+//    {
+//        if(toast != null)
+//        {
+//            toast.cancel();
+//        }
+//        toast = Toast.makeText(context , message, Toast.LENGTH_SHORT);
+//        toast.show();
+//    }
+
+    class TryToLogin extends AsyncTask<String, String, String>
+    {
 
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(String... params)
+        {
 
             HttpURLConnection loginConnection = Server.openConnection("login.php");
             HashMap<String, String> loginAndPassMap = new HashMap<>();
@@ -52,43 +66,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Server.writeToHttpURLConnection(loginConnection,
                     Server.convertHashMapToPOSTString(loginAndPassMap));
             return Server.readFromHttpURLConnection(loginConnection);
-
-
         }
 
         @Override
-        protected void onPostExecute(String responce) {
-            if (responce.equals("success")) {
+        protected void onPostExecute(String responce)
+        {
+            if (responce.equals("success"))
+            {
                 Intent i = new Intent(context, AfterSuccessLogin.class);
                 startActivity(i);
-            } else
-            {
-                Toast.makeText(context, "Login or password wrong", Toast.LENGTH_LONG);
             }
-            return;
+            else
+            {
+                // changeToast("Login or password wrong", context, toast);
+                if(toast != null)
+                {
+                    toast.cancel();
+                }
+                toast = Toast.makeText(context , "Login or password wrong", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         Log.d("DEBUG", "tried to log");
         new TryToLogin().execute(etUsername.getText().toString(),
                 etPassword.getText().toString());
-        //   Log.d("DEBUG", response);
-
-//        if(tryToLogin.getSuccess())
-//            Toast.makeText(this,"Loged successfully", Toast.LENGTH_LONG).show();
-//
-
-        //Toast.makeText(this, test.logIn(),Toast.LENGTH_LONG).show();
-
-//        HashMap postData = new HashMap();
-//        postData.put("mobile", "android");
-//        postData.put("txtUsername", etUsername.getText().toString());
-//        postData.put("txtPassword", etPassword.getText().toString() );
-//
-//        PostResponseAsyncTask task = new PostResponseAsyncTask(this, postData);
-//        task.execute("http://10.0.2.2/client/login.php"); //localhost:8080
 
     }
 

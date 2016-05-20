@@ -5,10 +5,12 @@ import android.os.AsyncTask;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 
-public class Register extends AsyncTask<String,Void,String> {
+public class Register extends AsyncTask<String,Void,String>
+{
 
     @Override
-    protected String doInBackground(String... params) {
+    protected String doInBackground(String... params)
+    {
         HashMap<String,String> user = new HashMap<>();
         user.put("txtUsername", params[0]);
         user.put("txtPassword", params[1]);

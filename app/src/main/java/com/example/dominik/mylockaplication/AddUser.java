@@ -21,7 +21,9 @@ AddUser extends AppCompatActivity implements View.OnClickListener
     EditText etLogin, etName, etPassword1, etPassword2, etEmail;
     private Context context;
     Button btnLogin, btnBackToLogin;
-    CheckBox checkBox;
+    public CheckBox checkBox;
+    String isChecked = "";
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,17 +46,21 @@ AddUser extends AppCompatActivity implements View.OnClickListener
         btnBackToLogin = (Button) findViewById(R.id.btnBackToLogin);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         context = this;
-
     }
 
     @Override
     public void onClick(View v)
     {
-        new TryToAddNewUser().execute(etName.getText().toString(),
-                etLogin.getText().toString(),
-                etPassword1.getText().toString(),
-                etPassword2.getText().toString(),
-                etEmail.getText().toString());
+        if(checkBox.isChecked()) isChecked = "yes";
+        else isChecked = "no";
+
+            new TryToAddNewUser().execute(etName.getText().toString(),
+                    etLogin.getText().toString(),
+                    etPassword1.getText().toString(),
+                    etPassword2.getText().toString(),
+                    etEmail.getText().toString(),
+                    isChecked.toString());
+
     }
 
     public void BackToLogin(View view)
@@ -76,6 +82,7 @@ AddUser extends AppCompatActivity implements View.OnClickListener
             loginAndPassMap.put("txtPassword1", params[2]);
             loginAndPassMap.put("txtPassword2", params[3]);
             loginAndPassMap.put("txtEmail", params[4]);
+            loginAndPassMap.put("isChecked", params[5]);
 
             Server.writeToHttpURLConnection(connection, Server.convertHashMapToPOSTString(loginAndPassMap));
 
@@ -88,15 +95,23 @@ AddUser extends AppCompatActivity implements View.OnClickListener
             Log.d("DEBUG", responce);
             if(responce.equals("user_added"))
             {
-                if(checkBox.isChecked())
-                    Toast.makeText(context, "Add new user successful!", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(context, "You must accept a regulamin!", Toast.LENGTH_SHORT).show();
+                if(toast != null)
+                {
+                    toast.cancel();
+                }
+                toast = Toast.makeText(context , "Add new user successful!", Toast.LENGTH_SHORT);
+                toast.show();
             }
             else
             {
-                Toast.makeText(context, responce, Toast.LENGTH_LONG).show();
+                if(toast != null)
+                {
+                    toast.cancel();
+                }
+                toast = Toast.makeText(context , responce, Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
+
     }
 }

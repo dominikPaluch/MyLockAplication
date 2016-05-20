@@ -14,18 +14,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Server {
+public class Server
+{
     private static String address = "http://piotrtraczyk.tk/accountApp/";
     public static HttpURLConnection openConnection(String specificAddress)
     {
         HttpURLConnection resultHttpURLConnection = null;
-        try {
+        try
+        {
             URL url = new URL(address + specificAddress);
             resultHttpURLConnection = (HttpURLConnection) url.openConnection();
-        } catch (MalformedURLException e) {
+        }
+        catch (MalformedURLException e)
+        {
             Log.d("DEBUG", e.getMessage());
             e.printStackTrace();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             Log.d("DEBUG", e.getMessage());
             e.printStackTrace();
         }
@@ -37,12 +43,15 @@ public class Server {
         connection.setDoOutput(true);
         connection.setDoInput(true);
         BufferedWriter writer = null;
-        try {
+        try
+        {
             writer = new BufferedWriter(
                     new OutputStreamWriter(connection.getOutputStream(),"UTF-8"));
             writer.write(toWrite);
             writer.flush();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             Log.d("DEBUG", e.getMessage());
             e.printStackTrace();
         }
@@ -52,14 +61,17 @@ public class Server {
         BufferedReader reader = null;
         String buffer = null;
         StringBuilder response = new StringBuilder();
-        try {
+        try
+        {
             reader = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream(),"UTF-8"));
+                        new InputStreamReader(connection.getInputStream(),"UTF-8"));
             while((buffer = reader.readLine()) != null)
             {
                 response.append(buffer+"\n");
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         return response.toString().trim();

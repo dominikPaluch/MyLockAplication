@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/etLogin"
             android:layout_weight="0.5"
-            android:background="#e1dfdf" />
+            android:background="#e1dfdf"
+            android:singleLine="true"/>
 
     </LinearLayout>
     <LinearLayout
@@ -81,7 +82,8 @@
             android:ems="10"
             android:layout_weight="0.5"
             android:contextClickable="false"
-            android:background="#e1dfdf" />
+            android:background="#e1dfdf"
+            android:singleLine="true"/>
 
     </LinearLayout>
 
